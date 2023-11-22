@@ -1,0 +1,199 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% auto, cover; /* Primeira imagem esticada na horizontal, segunda imagem cobrindo */
+    color: rgb(0, 0, 0);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2730434b;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+}
+
+header img {
+    max-height: 30px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header a {
+    color: white;
+    margin: 0 50px;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+    margin-top: 200px; /* Alterei a margem superior */
+    background-color: #1716145a;
+    color: white;
+}
+
+#about,
+#services,
+#team,
+#contact {
+    min-height: 50vh;
+}
+
+section#about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left; /* Ajustei o alinhamento do texto para a esquerda */
+}
+
+.about-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section#services::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/fundo.jpg'); /* Substitua pelo caminho correto para a sua imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Garante que a pseudo-classe fique atrás do conteúdo da seção */
+}
+
+section#services {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+}
+
+section#services h2 {
+    margin: 0;
+}
+
+#services .custom-card {
+    background-color: #0000009f; /* Fundo preto */
+    border: 1px solid #000; /* Borda para separar os cartões */
+    color: white; /* Texto branco */
+    margin-bottom: 20px; /* Espaçamento inferior entre os cartões */
+}
+
+#services .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os cartões horizontalmente */
+}
+
+section#team h2 {
+    color: black; /* Adicione esta linha para definir a cor do texto como preto */
+}
+section#team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 200px; /* Ajuste a margem superior conforme necessário */
+    background-image: url('img/t.jpg'); /* Substitua pelo caminho correto para sua imagem */
+    background-size: cover;
+    background-position: center;
+}
+
+section#about {
+    text-align: center;
+    padding: 200px 0;
+    color: white; /* ou a cor desejada */
+}
+
+.team-header h2 {
+    margin-bottom: 20px;
+    color: white; /* ou a cor desejada */
+}
+
+
+.team-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+}
+
+.team-card {
+    background-color: white;
+    color: black;
+    padding: 50px;
+    text-align: center;
+}
+
+.team-card img {
+    max-width: auto;
+    max-height: 500px;
+    margin-bottom: 10px;
+}
+
+section#contact {
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    display: grid;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+footer {
+    background-color: #23145b;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

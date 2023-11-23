@@ -83,8 +83,10 @@ $stmt->close();
     }
 
     function terminarSessao() {
-        // Adicione a lógica para terminar a sessão aqui
-        alert('Terminar Sessão');
+        <?php
+        session_destroy(); // Destroi todas as informações da sessão
+        echo "window.location.href = 'login.html';";
+        ?>
     }
 
     function eliminarConta() {

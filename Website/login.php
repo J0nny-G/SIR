@@ -28,13 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Verificar se a senha está correta
             if (password_verify($password, $hashed_password)) {
-                echo "Login bem-sucedido para o usuário: $username";
+                echo"<script>window.location.href = 'index.html';</script>";
             } else {
                 // Mensagem de erro com informações de debugging
-                echo "Credenciais inválidas. Tente novamente.";
+                echo "<script>alert('Username ou Password errado'); window.location.href = 'login.html';</script>";
             }
         } else {
-            echo "Usuário não encontrado.";
+            echo "<script>alert('Username ou Password errado'); window.location.href = 'login.html';</script>";
         }
         
 

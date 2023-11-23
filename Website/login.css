@@ -13,12 +13,14 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 320px; /* Ajustado conforme sugestão */
     text-align: center;
+    font-size: 16px; /* Ajustado conforme sugestão */
 }
 
 h2 {
     color: #333;
+    font-size: 24px; /* Ajustado conforme sugestão */
 }
 
 label {
@@ -35,17 +37,24 @@ input {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 14px;
+    transition: border-color 0.3s ease-in-out; /* Adicionado conforme sugestão */
+}
+
+input:focus {
+    border-color: #3498db; /* Adicionado conforme sugestão */
 }
 
 button {
     background-color: #3498db;
     color: #fff;
     padding: 10px;
-    border: none;
+    border: 1px solid #2980b9; /* Adicionado conforme sugestão */
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
     font-size: 16px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Adicionado conforme sugestão */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adicionado conforme sugestão */
 }
 
 button:hover {
@@ -56,5 +65,12 @@ button:hover {
     display: block;
     margin-top: 15px;
     text-align: center;
-    color: #666;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease-in-out; /* Adicionado conforme sugestão */
+}
+
+.signup-link:hover {
+    text-decoration: underline;
 }

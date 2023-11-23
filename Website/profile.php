@@ -38,7 +38,7 @@ $stmt->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="perfil.css">
-    <title>Perfil do Usuário</title>
+    <title>Perfil</title>
 </head>
 <body>
 
@@ -60,16 +60,26 @@ $stmt->close();
     </div>
 
     <div class="buttons">
-        <button onclick="editarPerfil()">Editar</button>
+        <button onclick="mostrarFormularioEdicao()">Editar Perfil</button>
         <button onclick="terminarSessao()">Terminar Sessão</button>
         <button onclick="eliminarConta()">Eliminar Conta</button>
     </div>
+
+    <!-- Formulário de edição (inicialmente oculto) -->
+    <form id="formEdicao" style="display: none;" action="updateProfile.php" method="post">
+        <label for="novoNome">Novo Nome:</label>
+        <input type="text" id="novoNome" name="novoNome" value="<?php echo $user_name; ?>" required>
+
+        <label for="novoEmail">Novo Email:</label>
+        <input type="email" id="novoEmail" name="novoEmail" value="<?php echo $user_email; ?>" required>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
 </div>
 
 <script>
-    function editarPerfil() {
-        // Adicione a lógica para editar o perfil aqui
-        alert('Editar perfil');
+    function mostrarFormularioEdicao() {
+        document.getElementById("formEdicao").style.display = "block";
     }
 
     function terminarSessao() {

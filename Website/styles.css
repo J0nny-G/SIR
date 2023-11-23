@@ -2,10 +2,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    background-repeat: no-repeat, no-repeat;
     background-size: 100% auto, cover; /* Primeira imagem esticada na horizontal, segunda imagem cobrindo */
     color: rgb(0, 0, 0);
+    background-color: #070d10;
 }
 
 header {
@@ -98,6 +97,7 @@ section#services h2 {
     border: 1px solid #000; /* Borda para separar os cartões */
     color: white; /* Texto branco */
     margin-bottom: 20px; /* Espaçamento inferior entre os cartões */
+    max-width: 225px; /* Adjust the max-width to your desired size */
 }
 
 #services .card-deck {

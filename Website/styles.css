@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-size: 100% auto, cover; /* Primeira imagem esticada na horizontal, segunda imagem cobrindo */
     color: rgb(0, 0, 0);
-    background-color: #070d10;
+    background-color: #1b1b1b;
 }
 
 header {
@@ -12,7 +12,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #2730434b;
+    background-color: #1b1b1b;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -32,14 +32,14 @@ header nav {
 
 header a {
     color: white;
-    margin: 0 50px;
+    margin: 50px;
     text-decoration: none;
 }
 
 section {
     padding: 20px;
     text-align: center;
-    margin-top: 200px; /* Alterei a margem superior */
+    margin-top: 150px; /* Alterei a margem superior */
     background-color: #1716145a;
     color: white;
 }
@@ -88,16 +88,13 @@ section#services {
     padding: 20px;
 }
 
-section#services h2 {
-    margin: 0;
-}
-
 #services .custom-card {
     background-color: #0000009f; /* Fundo preto */
     border: 1px solid #000; /* Borda para separar os cartões */
     color: white; /* Texto branco */
-    margin-bottom: 20px; /* Espaçamento inferior entre os cartões */
-    max-width: 225px; /* Adjust the max-width to your desired size */
+    margin-bottom: 30px; /* Espaçamento inferior entre os cartões */
+    max-width: 225px; /* Ajuste a largura máxima conforme desejado */
+    max-height: 200px;
 }
 
 #services .card-deck {
@@ -106,18 +103,15 @@ section#services h2 {
     justify-content: center; /* Centraliza os cartões horizontalmente */
 }
 
-section#team h2 {
-    color: black; /* Adicione esta linha para definir a cor do texto como preto */
-}
 section#team {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     margin-top: 200px; /* Ajuste a margem superior conforme necessário */
-    background-image: url('img/t.jpg'); /* Substitua pelo caminho correto para sua imagem */
+    background-image: url('img/t.jpg');
     background-size: cover;
-    background-position: center;
+    background-repeat: no-repeat;
 }
 
 section#about {
@@ -125,24 +119,22 @@ section#about {
     padding: 200px 0;
     color: white; /* ou a cor desejada */
 }
-
-.team-header h2 {
-    margin-bottom: 20px;
-    color: white; /* ou a cor desejada */
+.ImgP{
+    margin-right: 150px;
 }
 
-
-.team-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 100px;
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px; /* Ajuste conforme necessário */
+    margin: 0 auto;
 }
 
-.team-card {
-    background-color: white;
-    color: black;
-    padding: 50px;
-    text-align: center;
+#about img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner pai */
+    margin-top: 20px; /* Ajuste conforme necessário */
 }
 
 .team-card img {
@@ -186,7 +178,7 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 footer {

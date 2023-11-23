@@ -1,4 +1,6 @@
 <?php
+session_start(); // Inicia a sessão
+
 // Verificação do formulário de login
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar se os campos foram preenchidos
@@ -28,18 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Verificar se a senha está correta
             if (password_verify($password, $hashed_password)) {
-                echo"<script>window.location.href = 'index.html';</script>";
+                // Armazenar o username na sessão
+                $_SESSION['username'] = $username;
+                // Redirecionar para a página profile.php
+                header('Location: profile.php');
+                exit();
             } else {
-                // Mensagem de erro com informações de debugging
-                echo "<script>alert('Username ou Password errado'); window.location.href = 'login.html';</script>";
+                // Mensagem de erro
+                echo "<script>alert('Credenciais inválidas.'); window.location.href = 'login.html';</script>";
             }
         } else {
-            echo "<script>alert('Username ou Password errado'); window.location.href = 'login.html';</script>";
+            // Mensagem de erro
+            echo "<script>alert('Credenciais inválidas.'); window.location.href = 'login.html';</script>";
         }
-        
 
         $stmt->close();
-
+        $conn->close();
     }
 }
 ?>

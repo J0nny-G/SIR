@@ -51,7 +51,7 @@ $stmt->close();
 
 <div class="profile-container">
     <div class="profile-image">
-        <img src="img/pedro.jpg" alt="Imagem de Perfil">
+        <img src="img/perfil.png" alt="Imagem de Perfil">
     </div>
     <div class="user-info">
         <p><strong>Nome:</strong> <?php echo $user_name ?></p>

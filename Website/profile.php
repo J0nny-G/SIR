@@ -83,13 +83,11 @@ $stmt->close();
     }
 
     function terminarSessao() {
-        // Adicione a lógica para terminar a sessão aqui
-        alert('Terminar Sessão');
+        window.location.href = 'logout.php';
     }
 
     function eliminarConta() {
-        // Adicione a lógica para excluir a conta aqui
-        alert('Eliminar Conta');
+        window.location.href = 'deleteAccount.php';
     }
 </script>
 

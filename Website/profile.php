@@ -1,6 +1,12 @@
 <?php
 session_start(); // Inicia a sessão
 
+// Verifica se a sessão está iniciada
+if (!isset($_SESSION['username'])) {
+    // Se a sessão não estiver iniciada, redireciona para a página de login
+    header("Location: login.html");
+    exit();
+}
 
 $logged_in_username = $_SESSION['username'];
 
@@ -29,6 +35,15 @@ $stmt->bind_result($user_email);
 $stmt->fetch();
 $stmt->close();
 
+$stmt = $conn->prepare("SELECT imgProfile FROM users WHERE username = ?");
+$stmt->bind_param("s", $logged_in_username);
+$stmt->execute();
+$stmt->bind_result($user_img);
+
+// Obtém o resultado da consulta
+$stmt->fetch();
+$stmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +66,7 @@ $stmt->close();
 
 <div class="profile-container">
     <div class="profile-image">
-        <img src="img/pedro.jpg" alt="Imagem de Perfil">
+        <img src="<?php echo $user_img ?>" alt="Imagem de Perfil">
     </div>
     <div class="user-info">
         <p><strong>Nome:</strong> <?php echo $user_name ?></p>
@@ -66,12 +81,15 @@ $stmt->close();
     </div>
 
     <!-- Formulário de edição (inicialmente oculto) -->
-    <form id="formEdicao" style="display: none;" action="updateProfile.php" method="post">
+    <form id="formEdicao" style="display: none;" action="updateProfile.php" method="post" enctype="multipart/form-data">
         <label for="novoNome">Novo Nome:</label>
         <input type="text" id="novoNome" name="novoNome" value="<?php echo $user_name; ?>" required>
 
         <label for="novoEmail">Novo Email:</label>
         <input type="email" id="novoEmail" name="novoEmail" value="<?php echo $user_email; ?>" required>
+
+        <label for="novaFoto">Nova Foto de Perfil:</label>
+        <input type="file" id="novaFoto" name="novaFoto">
 
         <button type="submit">Salvar Alterações</button>
     </form>

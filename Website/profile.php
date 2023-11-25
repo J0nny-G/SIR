@@ -60,8 +60,8 @@ $stmt->close();
 <div class="sidemenu">
     <!-- Adicione links ou itens do sidemenu conforme necessário -->
     <p><a href="#">Página Inicial</a></p>
-    <p><a href="#">Configurações</a></p>
-    <p><a href="#">Ajuda</a></p>
+    <p><a href="#">Adicionar Filme/Série</a></p>
+    <p><a href="#">Meu Perfil</a></p>
 </div>
 
 <div class="profile-container">

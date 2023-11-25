@@ -15,6 +15,15 @@ body {
     box-sizing: border-box;
 }
 
+.sidemenu a {
+    color: #fff; /* Cor desejada para os links na barra lateral */
+    text-decoration: none; /* Remove o sublinhado padrão */
+}
+
+.sidemenu a:hover {
+    color: #02ff9a; /* Cor quando o mouse está sobre o link (opcional) */
+}
+
 .profile-container {
     display: flex;
     align-items: center;

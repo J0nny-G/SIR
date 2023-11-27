@@ -1,5 +1,31 @@
 <?php
 session_start();
+
+// Conexão com a base de dados
+$conn = new mysqli("localhost", "root", "", "movitime");
+
+// Verifica a conexão
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+// Consulta para obter os gêneros da tabela categorys
+$query = "SELECT idCategory, name FROM categorys";
+$result = $conn->query($query);
+
+// Array para armazenar os gêneros
+$generos = [];
+
+// Preenche o array com os gêneros obtidos da consulta
+while ($row = $result->fetch_assoc()) {
+    $generos[] = [
+        'idCategory' => $row['idCategory'],
+        'name' => $row['name']
+    ];
+}
+
+// Fecha a conexão com o banco de dados
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +50,26 @@ session_start();
     <h2>Adicionar Novo Filme/Série</h2>
 
     <div class="form-container">
-        <form action="processar_filme.php" method="post" enctype="multipart/form-data">
+        <form action="newMovie.php" method="post" enctype="multipart/form-data">
             <label for="titulo">Título:</label>
             <input type="text" id="titulo" name="titulo" required>
 
             <label for="genero">Gênero:</label>
-            <input type="text" id="genero" name="genero" required>
+            <!-- Use um menu suspenso (select) para os gêneros -->
+            <select id="genero" name="genero" required>
+                <?php
+                // Exibe as opções de gênero no menu suspenso
+                foreach ($generos as $genero) {
+                    echo "<option value=\"{$genero['idCategory']}\">{$genero['name']}</option>";
+                }
+                ?>
+            </select>
 
             <label for="ano">Ano de Lançamento:</label>
-            <input type="number" id="ano" name="ano" required>
+            <input type="text" id="ano" name="ano" required>
+
+            <label for="">Duração:</label>
+            <input type="number" id="duracao" name="duracao" required>
 
             <label for="sinopse">Sinopse:</label>
             <textarea id="sinopse" name="sinopse" rows="4" required></textarea>
@@ -44,8 +81,6 @@ session_start();
         </form>
     </div>
 </div>
-
-<!-- Adicione seu script JavaScript aqui, se necessário -->
 
 </body>
 </html>

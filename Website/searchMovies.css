@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidemenu {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+}
+
+.sidemenu a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.content-container {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.category-buttons {
+    margin-bottom: 20px;
+}
+
+.category-buttons button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.movie-covers {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px; /* Para compensar a margem direita nas imagens */
+}
+
+.movie-covers img {
+    width: 150px;
+    height: 250px; /* Altura fixa */
+    object-fit: cover; /* Mantém a proporção e corta o excesso se necessário */
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

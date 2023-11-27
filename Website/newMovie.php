@@ -20,7 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $duracao = $_POST['duracao'];
     $sinopse = $_POST['sinopse'];
 
-    print $genero;
+    // Verificações adicionais
+    if ($duracao <= 0) {
+        echo "<script>alert('Erro: A duração deve ser maior que zero.');window.location.href = 'addMovies.php';</script>";
+        exit;
+    }
+
+    if ($ano < 1895) {
+        echo "<script>alert('Erro: O ano deve ser maior ou igual a 1895.');window.location.href = 'addMovies.php';</script>";
+        exit;
+    }
 
     // Manipule o arquivo de imagem (certifique-se de ter as devidas permissões na pasta)
     $imagem_nome = uniqid() . '_' . $_FILES['capaFilme']['name'];
@@ -30,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica se é uma imagem
     $allowed_image_types = array("image/jpeg", "image/png", "image/gif");
     if (!in_array($_FILES['capaFilme']['type'], $allowed_image_types)) {
-        echo "Erro: Apenas imagens JPEG, PNG ou GIF são permitidas.";
+        echo "<script>alert('Erro: Apenas imagens JPEG, PNG ou GIF são permitidas.');window.location.href = 'addMovies.php';</script>";
         exit;
     }
 
@@ -55,17 +64,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_moviecategory = "INSERT INTO moviecategory (idMovie, idCategory) VALUES (?, ?)";
         $stmt_moviecategory = $conn->prepare($sql_moviecategory);
         $stmt_moviecategory->bind_param("ii", $idMovie, $idCategory);
-        
+
         if ($stmt_moviecategory->execute()) {
-            echo "Filme/Série adicionado com sucesso!";
+            echo "<script>alert('Filme/Série adicionado com sucesso!'); window.location.href = 'addMovies.php';</script>";
         } else {
-            echo "Erro ao adicionar filme/série: " . $stmt_moviecategory->error;
+            echo "<script>alert('Erro ao adicionar filme/série: " . $stmt_moviecategory->error . "');window.location.href = 'addMovies.php';</script>";
         }
 
         // Feche a declaração preparada da tabela moviecategory
         $stmt_moviecategory->close();
     } else {
-        echo "Erro ao adicionar filme/série: " . $stmt->error;
+        echo "<script>alert('Erro ao adicionar filme/série: " . $stmt->error . "');window.location.href = 'addMovies.php';</script>";
     }
 
     // Feche a declaração preparada e a conexão com o banco de dados

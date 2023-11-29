@@ -55,12 +55,18 @@ $conn->close();
 
     <div class="movie-covers">
         <?php
-        // Exibe as capas dos filmes
+        // Exibe as capas dos filmes como botões/link
         while ($row_movie = $result_movies->fetch_assoc()) {
+            echo "<form action=\"movie_details.php\" method=\"post\">";
+            echo "<input type=\"hidden\" name=\"id\" value=\"{$row_movie['idMovie']}\">";
+            echo "<button type=\"submit\" class=\"movie-button\">";
             echo "<img src=\"uploads/{$row_movie['imgMovie']}\" alt=\"{$row_movie['name']}\">";
+            echo "</button>";
+            echo "</form>";
         }
         ?>
     </div>
+
 </div>
 
 <script>

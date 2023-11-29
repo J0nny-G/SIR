@@ -69,3 +69,11 @@ button {
     margin-right: 10px;
     margin-bottom: 10px;
 }
+
+.movie-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+

@@ -77,6 +77,9 @@ $conn->close();
             <label for="capaFilme">Capa do Filme/Série:</label>
             <input type="file" id="capaFilme" name="capaFilme" accept="image/*" required>
 
+            <label for="">Link do trail do Filme/Serié:</label>
+            <input type="text" id="trail" name="trail" required>
+
             <button type="submit">Adicionar Filme/Série</button>
         </form>
     </div>

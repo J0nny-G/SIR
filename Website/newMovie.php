@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ano = $_POST['ano'];
     $duracao = $_POST['duracao'];
     $sinopse = $_POST['sinopse'];
+    $trail = $_POST['trail'];
 
     // Verificações adicionais
     if ($duracao <= 0) {
@@ -47,13 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($imagem_temp, $pasta_destino . $imagem_nome);
 
     // Use declaração preparada para evitar injeção de SQL
-    $sql = "INSERT INTO movies (name, duration, releaseYear, description, imgMovie) 
-            VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO movies (name, duration, releaseYear, description, imgMovie, trail) 
+            VALUES (?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
     // Vincule os parâmetros
-    $stmt->bind_param("sisss", $titulo, $duracao, $ano, $sinopse, $imagem_nome);
+    $stmt->bind_param("sisss", $titulo, $duracao, $ano, $sinopse, $imagem_nome, $trail);
 
     // Execute a declaração preparada
     if ($stmt->execute()) {

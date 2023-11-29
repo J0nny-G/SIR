@@ -40,15 +40,20 @@ $conn->close();
         echo "<p>{$row_movie_details['duration']}</p>";
         echo "<p>{$row_movie_details['releaseYear']}</p>";
         echo "<img src=\"uploads/{$row_movie_details['imgMovie']}\" alt=\"{$row_movie_details['name']}\">";
-        $link=$row_movie_details['trail'];
-        if (!empty($row_movie_details['trail'])) {
+        
+        // Adiciona o vídeo do YouTube
+        $link = $row_movie_details['trail'];
+        if (!empty($link)) {
             echo "<div class=\"youtube-container\">";
-            echo "<iframe width=\"560\" height=\"315\" src=\"$link\" title=\"YouTube video player\" frameborder=\"0\"></iframe>";
+            echo "<iframe width=\"560\" height=\"315\" src=\"$link\" title=\"YouTube video player\" frameborder=\"0\" allowfullscreen></iframe>";
             echo "</div>";
+        } else {
+            echo "<p>Nenhum vídeo disponível.</p>";
         }
     }
     ?>
 </div>
+
 
 </body>
 </html>

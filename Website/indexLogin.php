@@ -31,6 +31,7 @@ $conn->close();
     <title>Pesquisar Filmes/Séries</title>
 </head>
 <body>
+    
 
 <div class="sidemenu">
     <p><a href="#">Página Inicial</a></p>

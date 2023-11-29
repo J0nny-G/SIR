@@ -40,7 +40,12 @@ $conn->close();
         echo "<p>{$row_movie_details['duration']}</p>";
         echo "<p>{$row_movie_details['releaseYear']}</p>";
         echo "<img src=\"uploads/{$row_movie_details['imgMovie']}\" alt=\"{$row_movie_details['name']}\">";
-        // Adicione mais detalhes conforme necessário
+        $link=$row_movie_details['trail'];
+        if (!empty($row_movie_details['trail'])) {
+            echo "<div class=\"youtube-container\">";
+            echo "<iframe width=\"560\" height=\"315\" src=\"$link\" title=\"YouTube video player\" frameborder=\"0\"></iframe>";
+            echo "</div>";
+        }
     }
     ?>
 </div>

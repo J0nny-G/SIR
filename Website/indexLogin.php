@@ -32,7 +32,6 @@ $conn->close();
 </head>
 <body>
     
-
 <div class="sidemenu">
     <p><a href="#">Página Inicial</a></p>
     <p><a href="addMovies.php">Adicionar Filme/Série</a></p>

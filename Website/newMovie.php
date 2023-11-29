@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
 
     // Vincule os parâmetros
-    $stmt->bind_param("sisss", $titulo, $duracao, $ano, $sinopse, $imagem_nome, $trail);
+    $stmt->bind_param("sissss", $titulo, $duracao, $ano, $sinopse, $imagem_nome, $trail);
 
     // Execute a declaração preparada
     if ($stmt->execute()) {

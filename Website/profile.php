@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta SQL para obter o nome correspondente ao username
-$stmt = $conn->prepare("SELECT name FROM users WHERE username = ?");
+$stmt = $conn->prepare("SELECT nameUser FROM users WHERE username = ?");
 $stmt->bind_param("s", $logged_in_username);
 $stmt->execute();
 $stmt->bind_result($user_name);

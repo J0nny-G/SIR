@@ -14,7 +14,7 @@ $query_categories = "SELECT idCategory, name FROM categorys";
 $result_categories = $conn->query($query_categories);
 
 // Consulta para obter as capas dos filmes da tabela movies
-$query_movies = "SELECT idMovie, name, imgMovie FROM movies";
+$query_movies = "SELECT idMovie, name, imgMovie FROM movies WHERE approval = 1";
 $result_movies = $conn->query($query_movies);
 
 // Fecha a conexão com o banco de dados

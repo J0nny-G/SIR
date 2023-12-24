@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Inserir os dados na tabela 'usuarios'
-        $insert_query = "INSERT INTO users (username, password, name, email) VALUES (?, ?, ?, ?)";
+        $insert_query = "INSERT INTO users (username, password, nameUser, email) VALUES (?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($insert_query);
         $insert_stmt->bind_param("ssss", $username, $hashed_password, $name, $email);
 

@@ -17,11 +17,6 @@ $stmt->bind_result($foto_atual);
 $stmt->fetch();
 $stmt->close();
 
-if (isset($_POST['novoNome']) && isset($_POST['novoEmail'])) {
-    $novoNome = $_POST['novoNome'];
-    $novoEmail = $_POST['novoEmail'];
-}
-
 if (isset($_FILES['novaFoto']) && $_FILES['novaFoto']['error'] === UPLOAD_ERR_OK) {
     $uploadDir = 'uploads/'; // Diretório para armazenar as fotos
     $foto_token = uniqid(); // Gera um token único para a foto
@@ -42,6 +37,26 @@ if (isset($_FILES['novaFoto']) && $_FILES['novaFoto']['error'] === UPLOAD_ERR_OK
     } else {
         echo "Falha no upload da foto.";
     }
+}
+
+// Atualiza o nome se fornecido
+if (isset($_POST['novoNome'])) {
+    $novoNome = $_POST['novoNome'];
+
+    $stmt = $conn->prepare("UPDATE users SET nameUser = ? WHERE username = ?");
+    $stmt->bind_param("ss", $novoNome, $logged_in_username);
+    $stmt->execute();
+    $stmt->close();
+}
+
+// Atualiza o email se fornecido
+if (isset($_POST['novoEmail'])) {
+    $novoEmail = $_POST['novoEmail'];
+
+    $stmt = $conn->prepare("UPDATE users SET email = ? WHERE username = ?");
+    $stmt->bind_param("ss", $novoEmail, $logged_in_username);
+    $stmt->execute();
+    $stmt->close();
 }
 
 // Redireciona de volta para a página de perfil

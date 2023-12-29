@@ -18,22 +18,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Conexão falhou: " . $conn->connect_error);
         }
 
-        // Consulta SQL para obter a senha hash
-        $stmt = $conn->prepare("SELECT password FROM users WHERE username = ?");
+        // Consulta SQL para obter a senha hash e idLoads
+        $stmt = $conn->prepare("SELECT password, idLoads FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $stmt->store_result();  // Importante: armazena o resultado antes de fazer o bind_result
+        $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($hashed_password);
+            $stmt->bind_result($hashed_password, $idLoads);
             $stmt->fetch();
 
             // Verificar se a senha está correta
             if (password_verify($password, $hashed_password)) {
                 // Armazenar o username na sessão
                 $_SESSION['username'] = $username;
-                // Redirecionar para a página profile.php
-                header('Location: profile.php');
+
+                // Redirecionar com base no valor de idLoads
+                if ($idLoads == 1) {
+                    header('Location: adminIndex.php');
+                } elseif ($idLoads == 2) {
+                    header('Location: pagina2.php');
+                } elseif ($idLoads == 5) {
+                    header('Location: profile.php');
+                } else {
+                    // Valor desconhecido de idLoads
+                    echo "Valor desconhecido de idLoads.";
+                }
+
                 exit();
             } else {
                 // Mensagem de erro

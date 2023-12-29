@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+// Verifica se a sessão está iniciada
+if (!isset($_SESSION['username'])) {
+    // Se a sessão não estiver iniciada, redireciona para a página de login
+    header("Location: login.html");
+    exit();
+}
+
 // Conexão com a base de dados
 $conn = new mysqli("localhost", "root", "", "movitime");
 

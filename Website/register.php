@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $name = $_POST["name"];
     $email = $_POST["email"];
+    $idLoads = 5;
 
     // Conectar ao banco de dados (substitua com suas próprias credenciais)
     $conn = new mysqli("localhost", "root", "", "movitime");
@@ -31,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Inserir os dados na tabela 'usuarios'
-        $insert_query = "INSERT INTO users (username, password, nameUser, email) VALUES (?, ?, ?, ?)";
+        $insert_query = "INSERT INTO users (username, password, nameUser, email, idloads) VALUES (?, ?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($insert_query);
-        $insert_stmt->bind_param("ssss", $username, $hashed_password, $name, $email);
+        $insert_stmt->bind_param("ssssi", $username, $hashed_password, $name, $email, $idLoads);
 
         if ($insert_stmt->execute()) {
             echo "<script>alert('Conta criada com sucesso!'); window.location.href = 'login.html';</script>";

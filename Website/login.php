@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($idLoads == 1) {
                     header('Location: adminIndex.php');
                 } elseif ($idLoads == 2) {
-                    header('Location: pagina2.php');
+                    header('Location: filmesPendentes.php');
                 } elseif ($idLoads == 5) {
                     header('Location: profile.php');
                 } else {

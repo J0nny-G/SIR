@@ -1,0 +1,90 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.sidemenu {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    position: fixed;
+    height: 100%;
+}
+
+.sidemenu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+}
+
+.sidemenu a:hover {
+    background-color: #555;
+}
+
+.content-container {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td img {
+    max-width: 100px;
+    height: auto;
+}
+
+form {
+    display: inline-block;
+}
+
+button {
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    color: white;
+}
+
+button[name="aprovar"] {
+    background-color: #4CAF50;
+}
+
+button[name="reprovar"] {
+    background-color: #f44336;
+}
+
+.logout-form {
+    margin-top: 20px; /* Adicione margem acima do botão de logout */
+}
+
+.logout-form button {
+    background-color: #ff0000; /* Cor de fundo do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    padding: 10px; /* Espaçamento interno do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Adiciona um cursor de ponteiro quando o mouse passa sobre o botão */
+}

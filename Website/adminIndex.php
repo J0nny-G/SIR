@@ -15,6 +15,15 @@ if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
+// Obtém todos os nomes de idLoads
+$sqlLoads = "SELECT idLoads, name FROM loads";
+$resultLoads = $conn->query($sqlLoads);
+
+$loads = array();
+while ($row = $resultLoads->fetch_assoc()) {
+    $loads[] = $row;
+}
+
 // Função para escapar caracteres especiais e evitar SQL injection
 function sanitize($conn, $value)
 {
@@ -114,15 +123,14 @@ $users = getAllUsersWithLoadNames($conn);
                 <td><?php echo $user['name']; ?></td>
                 <td>
                     <form method="post" action="">
-                        <input type="hidden" name="edit_id" value="<?php echo $user['idUser']; ?>">
-                        <input type="hidden" name="edit_name" value="<?php echo $user['nameUser']; ?>">
-                        <input type="hidden" name="edit_username" value="<?php echo $user['username']; ?>">
-                        <button type="submit" name="edit">Edit</button>
-                    </form>
-                    <form method="post" action="">
                         <input type="hidden" name="idloads_id" value="<?php echo $user['idUser']; ?>">
-                        <input type="number" name="new_idloads" placeholder="New idLoads">
-                        <button type="submit" name="update_idloads">Update idLoads</button>
+                        <select name="new_idloads">
+                            <?php foreach ($loads as $load): ?>
+                                <option value="<?php echo $load['idLoads']; ?>"><?php echo $load['name']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+
+                        <button type="submit" name="update_idloads">Update Loads</button>
                     </form>
                     <form method="post" action="">
                         <input type="hidden" name="delete_id" value="<?php echo $user['idUser']; ?>">

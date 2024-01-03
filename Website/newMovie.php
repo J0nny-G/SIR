@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_moviecategory->bind_param("ii", $idMovie, $idCategory);
 
         if ($stmt_moviecategory->execute()) {
-            echo "<script>alert('Filme/Série adicionado com sucesso!'); window.location.href = 'addMovies.php';</script>";
+            echo "<script>alert('Filme/Série adicionado com sucesso! Está em estado de aprovação.'); window.location.href = 'addMovies.php';</script>";
         } else {
             echo "<script>alert('Erro ao adicionar filme/série: " . $stmt_moviecategory->error . "');window.location.href = 'addMovies.php';</script>";
         }

@@ -77,3 +77,13 @@ button {
     cursor: pointer;
 }
 
+.category-buttons {
+    display: flex;
+    justify-content: space-around; /* ou outro valor conforme necessário */
+}
+
+.category-button {
+    /* Estilos adicionais para os botões, se necessário */
+    margin: 5px; /* Espaçamento entre os botões */
+}
+

@@ -20,8 +20,16 @@ if ($conn->connect_error) {
 $query_categories = "SELECT idCategory, name FROM categorys";
 $result_categories = $conn->query($query_categories);
 
-// Consulta para obter as capas dos filmes da tabela movies
-$query_movies = "SELECT idMovie, name, imgMovie FROM movies WHERE approval = 1";
+$categoriaId = $_POST['categoryId'];
+
+// Consulta para obter as capas dos filmes da tabela movies com base no categoryId
+$query_movies = "SELECT m.idMovie, m.name, m.imgMovie FROM movies m";
+
+// Adiciona uma condição JOIN para a tabela moviecategory
+if ($categoriaId !== null) {
+    $query_movies .= " JOIN moviecategory mc ON m.idMovie = mc.idMovie WHERE mc.idCategory = $categoriaId";
+}
+
 $result_movies = $conn->query($query_movies);
 
 // Fecha a conexão com o banco de dados
@@ -51,7 +59,7 @@ $conn->close();
 <body>
     
 <div class="sidemenu">
-    <p><a href="#">Página Inicial</a></p>
+    <p><a href="indexLogin.php">Página Inicial</a></p>
     <p><a href="addMovies.php">Adicionar Filme/Série</a></p>
     <p><a href="profile.php">Meu Perfil</a></p>
 </div>

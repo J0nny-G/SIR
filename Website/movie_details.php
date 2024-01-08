@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="movieDetails.css">
+    <title>Detalhes do Filme/Série</title>
+</head>
+<body>
+
+<div class="content-container">
 <?php
 session_start();
 
@@ -43,17 +55,30 @@ $conn->close();
         
         // Adiciona o vídeo do YouTube
         $link = $row_movie_details['trail'];
+        echo "<div class=\"youtube-container\">";
         if (!empty($link)) {
-            echo "<div class=\"youtube-container\">";
-            echo "<iframe width=\"560\" height=\"315\" src=\"$link\" title=\"YouTube video player\" frameborder=\"0\" allowfullscreen></iframe>";
-            echo "</div>";
+            $videoId = getYouTubeVideoId($link);
+            echo "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/$videoId\" title=\"YouTube video player\" frameborder=\"0\" allowfullscreen></iframe>";
         } else {
             echo "<p>Nenhum vídeo disponível.</p>";
         }
+        echo "</div>";
     }
     ?>
-</div>
 
+</div>
 
 </body>
 </html>
+
+<?php
+function getYouTubeVideoId($url) {
+    $videoId = '';
+    $pattern = '/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/';
+    preg_match($pattern, $url, $matches);
+    if (isset($matches[1])) {
+        $videoId = $matches[1];
+    }
+    return $videoId;
+}
+?>

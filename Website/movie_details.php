@@ -82,6 +82,7 @@ $stmt->close();
         echo "      <textarea name='comment' rows='4' placeholder='Adicione seu comentário'></textarea>";
         echo "      <button type='submit'>Adicionar Comentário</button>";
         echo "  </form>";
+        echo "</div>";
 
         // Exibição de Comentários Armazenados no Banco de Dados
         $query_comments = "SELECT coments.idUser, coments.coment, users.imgProfile FROM coments INNER JOIN users ON coments.idUser = users.idUser WHERE coments.idMovie = $movieId";
@@ -94,13 +95,13 @@ $stmt->close();
                 echo "  <div class='user-profile'>";
                 echo "      <img src=\"{$row_comment['imgProfile']}\" alt='Imagem de Perfil'>";
                 echo "  </div>";
-                echo "  <p>{$row_comment['coment']}</p>";
+                echo "  <div class='comment-content'>";
+                echo "      <p>{$row_comment['coment']}</p>";
+                echo "  </div>";
                 echo "</div>";
             }
             echo "</div>";
         }
-
-        echo "</div>"; // Fechamento da div 'comments-section'
     }
     $conn->close();
     ?>

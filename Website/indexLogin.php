@@ -36,17 +36,6 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="searchMovies.css">
     <title>Pesquisar Filmes/Séries</title>
-    <style>
-        .category-buttons {
-            display: flex;
-            justify-content: space-around; /* ou outro valor conforme necessário */
-        }
-
-        .category-button {
-            /* Estilos adicionais para os botões, se necessário */
-            margin: 5px; /* Espaçamento entre os botões */
-        }
-    </style>
 </head>
 <body>
     
@@ -58,7 +47,7 @@ $conn->close();
 
 <div class="content-container">
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Pesquisar por nome...">
+        <input type="text" id="searchInput" placeholder="Pesquisar por Filme/Série...">
         <button onclick="searchMovies()">Pesquisar</button>
     </div>
 

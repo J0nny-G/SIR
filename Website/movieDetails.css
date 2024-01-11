@@ -37,7 +37,7 @@ body {
 
 .youtube-container {
     position: relative;
-    padding-bottom: 56.25%; /* Proporção do vídeo */
+    padding-bottom: 56.25%; 
     margin-top: 20px;
     height: 0;
     overflow: hidden;
@@ -53,7 +53,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Novos estilos para a seção de comentários e imagem de perfil */
 .comments-section {
     
     padding: 20px;
@@ -61,7 +60,7 @@ body {
     border-radius: 8px;
     color: #fff;
     display: flex;
-    align-items: center; /* Alinha os itens verticalmente */
+    align-items: center;
 }
 
 .comments-section h3 {
@@ -70,7 +69,7 @@ body {
 }
 
 .comments-section form {
-    flex: 1; /* Ajusta a largura da caixa de comentários para ocupar o restante do espaço disponível */
+    flex: 1;
     margin-top: 45px;
     margin-left: 20px;
 }
@@ -90,15 +89,56 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right; /* Alinha o botão à direita */
+    float: right; 
 }
 
 .user-profile {
-    margin-right: 20px;
+    margin-right: 50px;
 }
 
 .user-profile img {
     width: 80px;
     height: 80px;
     border: 2px solid #fff;
+    border-radius: 50%;
 }
+
+.all-comments {
+    background-color: #2c3e50;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.comment .user-profile {
+    margin-right: 15px;
+}
+
+.comment .user-profile img {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.comment .comment-content {
+    flex: 1;
+}
+
+.comment p {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #ccc;
+}
+
+.comment-timestamp {
+    font-size: 12px;
+    color: #888;
+}
+

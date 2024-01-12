@@ -44,6 +44,19 @@ function getAllUsersWithLoadNames($conn)
     return $users;
 }
 
+function getEvents($conn)
+{
+    $sql = "SELECT id,title,start_date,description FROM events";
+    $result = $conn->query($sql);
+
+    $event = array();
+    while ($row = $result->fetch_assoc()) {
+        $event[] = $row;
+    }
+
+    return $event;
+}
+
 // Função para atualizar informações do usuário
 function updateUser($conn, $id, $name, $username)
 {
@@ -92,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $users = getAllUsersWithLoadNames($conn);
+$events = getEvents($conn);
 
 ?>
 
@@ -111,10 +125,10 @@ $users = getAllUsersWithLoadNames($conn);
 
     <table>
         <tr>
-            <th>Name</th>
+            <th>Nome</th>
             <th>Username</th>
-            <th>Load Name</th>
-            <th>Actions</th>
+            <th>Função</th>
+            <th>Ações</th>
         </tr>
         <?php foreach ($users as $user): ?>
             <tr>
@@ -141,13 +155,102 @@ $users = getAllUsersWithLoadNames($conn);
         <?php endforeach; ?>
     </table>
 
+    <div class="estreias">
+        <div class="header">
+            <h2>Proximas Estreias</h2>
+            <button onclick="mostrarFormulario()" class="novo">Novo Lançamento</button>
+        </div>
+        <div class="novoFilme">
+            <form id="formEdicao" style="display: none;" action="events.php" method="post">
+                <label for="novoNome">Nome Filme/Série:</label>
+                <input type="text" id="novoNome" name="novoNome" required>
+
+                <label for="dataLancamento">Data de Estreia:</label>
+                <input type="date" id="dataLancamento" name="dataLancamento"  required>
+
+                <label for="descricao">Breve descrição:</label>
+                <input type="text" id="descricao" name="descricao" required>
+
+                <button type="submit">Criar nova Estreia</button>
+            </form>
+        </div>
+        <table>
+            <tr>
+                <th>Titulo do Filme/Série</th>
+                <th>Data de Estreia</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+            <?php foreach ($events as $event): ?>
+                <tr>
+                    <td><?php echo $event['title']; ?></td>
+                    <td><?php echo $event['start_date']; ?></td>
+                    <td><?php echo $event['description']; ?></td>
+                    <td>
+                        <button onclick="abrirJanela(
+                            '<?php echo $event['title']; ?>',
+                            '<?php echo $event['start_date']; ?>',
+                            '<?php echo $event['description']; ?>',
+                            <?php echo $event['id']; ?>
+                        )">Editar</button>
+                        <form action="deleteEstreia.php" method="post" >
+                            <input type="hidden" name="delete_event_id" value="<?php echo $event['id']; ?>">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+
     <div class="logout-btn">
         <form method="post" action="logout.php">
             <button type="submit">Logout</button>
         </form>
     </div>
 
+    <div id="meuPopup">
+        <h3>Editar Evento</h3>
+        <form id="editForm" method="post" action="editarEstreia.php">
+            <input type="hidden" id="editId" name="editId" value="">
+            <label for="editTitulo">Título:</label>
+            <input type="text" id="editTitulo" name="editTitulo" required>
+
+            <label for="editData">Data de Estreia:</label>
+            <input type="date" id="editData" name="editData" required>
+
+            <label for="editDescricao">Breve descrição:</label>
+            <input type="text" id="editDescricao" name="editDescricao" required>
+
+            <button type="submit">Salvar Edição</button>
+            <button type="button" onclick="fecharPopup()">Fechar</button>
+        </form>
+    </div>
+
 </div>
+
+<script>
+    function mostrarFormulario() {
+        document.getElementById("formEdicao").style.display = "block";
+    }
+
+    function abrirJanela(titulo, data, descricao, id) {
+        // Preencher os campos do popup com os dados do evento selecionado
+        document.getElementById('editId').value = id;
+        document.getElementById('editTitulo').value = titulo;
+        document.getElementById('editData').value = data;
+        document.getElementById('editDescricao').value = descricao;
+
+        // Exibir o popup
+        document.getElementById('meuPopup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function fecharPopup() {
+        document.getElementById('meuPopup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>

@@ -59,8 +59,9 @@ $conn->close();
 <body>
     
 <div class="sidemenu">
-    <p><a href="indexLogin.php">Página Inicial</a></p>
+<p><a href="#">Página Inicial</a></p>
     <p><a href="addMovies.php">Adicionar Filme/Série</a></p>
+    <p><a href="calendario.php">Lançamentos</a></p>
     <p><a href="profile.php">Meu Perfil</a></p>
 </div>
 

@@ -20,6 +20,10 @@ body {
     margin-bottom: 10px;
 }
 
+.sidemenu a:hover {
+    color: #02ff9a;
+}
+
 .content-container {
     margin-left: 220px;
     padding: 20px;

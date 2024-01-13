@@ -141,3 +141,27 @@ body {
     font-size: 12px;
     color: #888;
 }
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-image: url('img/estrela.png'); /* Substitua 'star.png' pelo caminho da sua imagem de estrela */
+    background-size: cover;
+}
+
+.rating input:checked ~ label {
+    background-image: url('img/estrelaCheia.png'); /* Substitua 'star-filled.png' pelo caminho da sua imagem de estrela preenchida */
+}

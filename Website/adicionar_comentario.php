@@ -41,10 +41,13 @@ if ($movieId === null) {
 // Obtém o comentario do formulário POST
 $comment = $_POST['comment'];
 
+// Obtém a classificação do formulário POST
+$classificacao = $_POST['rating'];
+
 // Insere o comentário na tabela comments
-$insert_query = "INSERT INTO coments (idUser, idMovie, coment) VALUES (?, ?, ?)";
+$insert_query = "INSERT INTO coments (idUser, idMovie, coment, classificacao) VALUES (?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($insert_query);
-        $insert_stmt->bind_param("iis", $idUser, $movieId, $comment);
+        $insert_stmt->bind_param("iisi", $idUser, $movieId, $comment, $classificacao);
 
         if ($insert_stmt->execute()) {
             echo "<script>alert('Comentario criado com sucesso!'); window.location.href = 'indexLogin.php';</script>";

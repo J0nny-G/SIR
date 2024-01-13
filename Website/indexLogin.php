@@ -83,13 +83,25 @@ $conn->close();
     </div>
 
 </div>
-
 <script>
     function searchMovies() {
-        var searchTerm = document.getElementById('searchInput').value;
-        // Implemente a lógica de pesquisa aqui
-        alert('Pesquisar por: ' + searchTerm);
-    }
+    searchTerm = document.getElementById('searchInput').value;
+
+    // Faça uma solicitação AJAX para searchMovies.php com o termo de pesquisa
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                // Atualize a div search-results com a resposta
+                document.getElementById('search-results').innerHTML = xhr.responseText;
+            } else {
+                alert('Erro na solicitação AJAX. Status: ' + xhr.status);
+            }
+        }
+    };
+    xhr.open('GET', 'search_results.php?searchTerm=' + encodeURIComponent(searchTerm), true);
+    xhr.send();
+}
 </script>
 
 </body>

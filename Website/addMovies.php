@@ -31,7 +31,7 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-// Fecha a conexão com o banco de dados
+// Fecha a conexão com a base de dados
 $conn->close();
 ?>
 

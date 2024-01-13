@@ -134,18 +134,6 @@ if ($result_coments->num_rows > 0) {
     ?>
 
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const stars = document.querySelectorAll('.rating input');
-
-        stars.forEach(star => {
-            star.addEventListener('click', function () {
-                const ratingValue = this.value;
-                alert('Você selecionou ' + ratingValue + ' estrelas!');
-            });
-        });
-    });
-</script>
 </body>
 </html>
 

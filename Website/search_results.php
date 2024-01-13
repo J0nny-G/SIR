@@ -8,20 +8,21 @@ if (!isset($_SESSION['username'])) {
 
 $conn = new mysqli("localhost", "root", "", "movitime");
 
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
+    if ($conn->connect_error) {
+        die("Falha na conexão: " . $conn->connect_error);
+    }
 
-if (isset($_GET['searchTerm'])) {
-    $searchTerm = $conn->real_escape_string($_GET['searchTerm']);
+    if (isset($_GET['searchTerm'])) {
+        $searchTerm = $conn->real_escape_string($_GET['searchTerm']);
+        $query_search = "SELECT idMovie, name, imgMovie FROM movies WHERE approval = 1 AND name LIKE '%$searchTerm%'";
+    } else {
+        echo "Parâmetros inválidos.";
+        exit();
+    }
 
-    // Consulta para pesquisar filmes com nomes que contenham o termo de pesquisa
-    $query_search = "SELECT idMovie, name, imgMovie FROM movies WHERE approval = 1 AND name LIKE '%$searchTerm%'";
     $result_search = $conn->query($query_search);
 
-    // Verifica se há resultados
     if ($result_search->num_rows > 0) {
-        // Exibir resultados da pesquisa
         while ($row_movie = $result_search->fetch_assoc()) {
             echo "<form action=\"movie_details.php\" method=\"post\">";
             echo "<input type=\"hidden\" name=\"id\" value=\"{$row_movie['idMovie']}\">";
@@ -33,7 +34,6 @@ if (isset($_GET['searchTerm'])) {
     } else {
         echo "Nenhum filme encontrado.";
     }
-}
 
 $conn->close();
 ?>

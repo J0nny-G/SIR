@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Jan-2024 às 19:45
+-- Tempo de geração: 14-Jan-2024 às 02:06
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -59,8 +59,46 @@ CREATE TABLE `coments` (
   `idComent` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `idMovie` int(11) NOT NULL,
-  `coment` varchar(255) NOT NULL
+  `coment` varchar(255) NOT NULL,
+  `classificacao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `coments`
+--
+
+INSERT INTO `coments` (`idComent`, `idUser`, `idMovie`, `coment`, `classificacao`) VALUES
+(8, 11, 10, 'cbdfg', 4),
+(9, 11, 9, 'melhor filme de terror', 2),
+(10, 11, 9, 'novo veiw\r\n', 5),
+(11, 11, 10, 'teste de classificação', 3),
+(12, 11, 11, 'melhor filme que já assisti', 3),
+(13, 11, 11, 'dsdfsf', 5),
+(14, 11, 10, 'teste sem skip', 3),
+(15, 11, 10, 'nova avaliação', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `start_date` date NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `start_date`, `description`) VALUES
+(1, 'teste', '2024-01-14', 'filme top'),
+(2, 'SIR', '2024-01-14', 'trabalho de SIR'),
+(3, 'ba', '2024-01-13', 'fsdfsdfs'),
+(4, 'tindade', '2024-01-18', 'homem grosso');
 
 -- --------------------------------------------------------
 
@@ -152,8 +190,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`idUser`, `username`, `password`, `nameUser`, `email`, `imgProfile`, `idLoads`) VALUES
 (7, 'jonyG', '$2y$10$.Rv2G1AIK1yEKDWMGC5P5OQEAH/rw34Ty0edRiI/DU4fvSB1PzMum', 'João Pedro', 'jonyg@gmail.com', 'uploads/656231818fdfd_joao.jpg', 2),
 (9, 'pedro.moura', '$2y$10$4MZLuzZLCCPN8VxPhEPWOuhUWheo/z7kuzzwvig8DB/nmGPcVD6oq', 'Pedro Miguel Álvares de Moura', 'pedromoura@gmail.com', 'uploads/658887345fc6b_305923247_474594221346504_1536418863465470168_n-removebg-preview.png', 1),
-(10, 'tomas', '$2y$10$df4v3oa5W1LJVAorofot9.p2l2uorGEx0El2feAHikhCTkfzf8K1C', 'tomas', 'tomas@gmail.com', '', 5),
-(11, 'teste', '$2y$10$NniGDXp7Uy3NOjM8SwihCuoSRlS34t3W/IbuppJQf8kPxZm.Ab6H.', 'teste', 'teste@gmail.com', '', 2);
+(11, 'teste', '$2y$10$NniGDXp7Uy3NOjM8SwihCuoSRlS34t3W/IbuppJQf8kPxZm.Ab6H.', 'teste', 'teste@gmail.com', 'uploads/659e76c78dcf1_305923247_474594221346504_1536418863465470168_n.jpg', 5);
 
 --
 -- Índices para tabelas despejadas
@@ -172,6 +209,12 @@ ALTER TABLE `coments`
   ADD PRIMARY KEY (`idComent`),
   ADD KEY `idUser` (`idUser`),
   ADD KEY `idMovie` (`idMovie`);
+
+--
+-- Índices para tabela `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `loads`
@@ -211,6 +254,18 @@ ALTER TABLE `categorys`
   MODIFY `idCategory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT de tabela `coments`
+--
+ALTER TABLE `coments`
+  MODIFY `idComent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de tabela `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `loads`
 --
 ALTER TABLE `loads`
@@ -232,7 +287,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para despejos de tabelas

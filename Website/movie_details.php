@@ -34,20 +34,20 @@ $stmt->bind_result($user_img);
 $stmt->fetch();
 $stmt->close();
 
-$query_coments = "SELECT * FROM coments WHERE idMovie = $movieId";
-$result_coments = $conn->query($query_coments);
+$query_comments = "SELECT coments.idUser, coments.coment, coments.classificacao, users.imgProfile FROM coments INNER JOIN users ON coments.idUser = users.idUser WHERE coments.idMovie = $movieId";
+$result_comments = $conn->query($query_comments);
 
 $average_rating = 0;
 $total_ratings = 0;
 
 $comments_data = [];
-while ($row_rating = $result_coments->fetch_assoc()) {
-    $comments_data[] = $row_rating;
-    $total_ratings += $row_rating['classificacao'];
+while ($row_comment = $result_comments->fetch_assoc()) {
+    $comments_data[] = $row_comment; // Correção aqui
+    $total_ratings += isset($row_comment['classificacao']) ? $row_comment['classificacao'] : 0;
 }
 
-if ($result_coments->num_rows > 0) {
-    $average_rating = $total_ratings / $result_coments->num_rows;
+if ($result_comments->num_rows > 0) {
+    $average_rating = $total_ratings / $result_comments->num_rows;
 }
 
 ?>
@@ -112,7 +112,7 @@ if ($result_coments->num_rows > 0) {
             echo "</div>";
 
             // Exibição de Comentários Armazenados no Banco de Dados
-            $query_comments = "SELECT coments.idUser, coments.coment, users.imgProfile FROM coments INNER JOIN users ON coments.idUser = users.idUser WHERE coments.idMovie = $movieId";
+            $query_comments = "SELECT coments.idUser, coments.coment, coments.classificacao, users.imgProfile FROM coments INNER JOIN users ON coments.idUser = users.idUser WHERE coments.idMovie = $movieId";
             $result_comments = $conn->query($query_comments);
 
             if ($result_comments->num_rows > 0) {
@@ -124,6 +124,7 @@ if ($result_coments->num_rows > 0) {
                     echo "  </div>";
                     echo "  <div class='comment-content'>";
                     echo "      <p>{$row_comment['coment']}</p>";
+                    echo "      <p><strong>Pontuação:</strong> " . (isset($row_comment['classificacao']) ? $row_comment['classificacao'] : 'Não classificado') . "</p>"; // Adicione esta linha
                     echo "  </div>";
                     echo "</div>";
                 }

@@ -43,7 +43,7 @@ $total_ratings = 0;
 $comments_data = [];
 while ($row_rating = $result_coments->fetch_assoc()) {
     $comments_data[] = $row_rating;
-    $total_ratings += $row_rating['classificacao'];
+    $total_ratings += isset($row_rating['classificacao']) ? $row_rating['classificacao'] : 0;
 }
 
 if ($result_coments->num_rows > 0) {

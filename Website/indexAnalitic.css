@@ -1,0 +1,30 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.canvas-container {
+    margin-bottom: 20px;
+}
+
+canvas {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}

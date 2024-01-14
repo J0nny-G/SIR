@@ -14,7 +14,7 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 320px; /* Ajustado conforme sugestão */
+    width: 340px; /* Ajustado conforme sugestão */
     text-align: center;
     font-size: 16px; /* Ajustado conforme sugestão */
 }
@@ -46,20 +46,21 @@ input:focus {
 }
 
 button {
-    background-color: #3498db;
+    background-color: #3498db; /* Azul */
     color: #fff;
     padding: 10px;
-    border: 1px solid #2980b9; /* Adicionado conforme sugestão */
+    border: 2px solid #2980b9; /* Tom mais escuro de azul para a borda */
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Adicionado conforme sugestão */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adicionado conforme sugestão */
+    width: 90%;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Tom mais escuro de azul ao passar o mouse */
+    border: 2px solid #3498db; /* Cor do botão ao passar o mouse */
 }
 
 .signup-link {

@@ -14,6 +14,43 @@
 
 $conn = new mysqli("localhost","root","","movitime");
 
+$user = 5;
+$admin = 1;
+$taster = 2;
+$analyst = 6;
+
+// Total de users
+$users = $conn->prepare("SELECT * FROM users WHERE idLoads = ?");
+$users->bind_param("i", $user);
+$users->execute();
+$users->store_result();
+$totalUsers = $users->num_rows;
+$users->close();
+
+// Total de admins
+$admins = $conn->prepare("SELECT * FROM users WHERE idLoads = ?");
+$admins->bind_param("i", $admin);
+$admins->execute();
+$admins->store_result();
+$totalAdmins = $admins->num_rows;
+$admins->close();
+
+// Total de tasters
+$tasters = $conn->prepare("SELECT * FROM users WHERE idLoads = ?");
+$tasters->bind_param("i", $taster);
+$tasters->execute();
+$tasters->store_result();
+$totalTasters = $tasters->num_rows;
+$tasters->close();
+
+// Total de analyst
+$analysts = $conn->prepare("SELECT * FROM users WHERE idLoads = ?");
+$analysts->bind_param("i", $analyst);
+$analysts->execute();
+$analysts->store_result();
+$totalAnalysts = $analysts->num_rows;
+$analysts->close();
+
 ?>
 
 <div style="width: 80%; margin: auto;">
@@ -31,8 +68,8 @@ $conn = new mysqli("localhost","root","","movitime");
         var userData = {
             labels: ['User', 'Admin', 'Taster', 'Analyst'],
             datasets: [{
-                label: 'Número de Utilizadores Registrados',
-                data: [, , , ], // Substitua pelos dados reais
+                label: 'Número de Tipos de Utilizadores Registrados',
+                data: [<?php echo $totalUsers ?>, <?php echo $totalAdmins; ?>, <?php echo $totalTasters; ?>, <?php echo $totalAnalysts; ?>],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -88,6 +125,7 @@ $conn = new mysqli("localhost","root","","movitime");
         });
     });
 </script>
+
 
 </body>
 </html>

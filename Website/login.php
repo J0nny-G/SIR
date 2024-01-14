@@ -40,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header('Location: filmesPendentes.php');
                 } elseif ($idLoads == 5) {
                     header('Location: profile.php');
+                } elseif($idLoads == 6){
+                    header('Location: indexAnalitic.php');
                 } else {
                     // Valor desconhecido de idLoads
                     echo "Valor desconhecido de idLoads.";

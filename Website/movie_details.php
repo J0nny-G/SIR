@@ -124,9 +124,9 @@ if ($result_comments->num_rows > 0) {
                     echo "  </div>";
                     echo "  <div class='comment-content'>";
                     echo "      <p>{$row_comment['coment']}</p>";
-                    echo "      <p><strong>Pontuação:</strong> " . (isset($row_comment['classificacao']) ? $row_comment['classificacao'] : 'Não classificado') . "</p>"; // Adicione esta linha
-                    echo "  </div>";
-                    echo "</div>";
+                    echo "      <p><strong>Classificação: </strong>" . (isset($row_comment['classificacao']) ? $row_comment['classificacao'] : 'Não classificado') . " &#9733;</p>";    
+                    echo "  </div>"; // Adicione esta linha para fechar a <div class='comment-content'>
+                    echo "</div>"; // Adicione esta linha para fechar a <div class='comment'>
                 }
                 echo "</div>";
             }

@@ -4,22 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
-    <div class="background">
-        <form method="post" action="login.php">
-            <img src="img/logo.png" alt="Logo" class="logo-image">
-            <h2></h2>
-            <input type="text" id="username" name="username" placeholder="Nome de Utilizador" required>
-            <br>
-            <input type="password" id="password" name="password" placeholder="Senha" required>
-            <br>
-            <button type="submit">Entrar</button>
-            <a href="register.html" class="signup-link">Não tem uma conta?</a>
-        </form>
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <form class="form-signin col-sm-8 col-md-6 col-lg-4" method="post" action="login.php">
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="img/logo.png" alt="Logo" width="auto" height="72">
+                    <h2 class="h3 mb-3 font-weight-normal">Login</h2>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Nome de Utilizador" required>
+                </div>
+
+                <div class="form-label-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                <a href="register.html" class="signup-link">Não tem uma conta?</a>
+            </form>
+        </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

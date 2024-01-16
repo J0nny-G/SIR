@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $duracao = $_POST['duracao'];
     $sinopse = $_POST['sinopse'];
     $trail = $_POST['trail'];
+    $anoAtual = date("Y");;
 
     // Verificações adicionais
     if ($duracao <= 0) {
@@ -27,8 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    if ($ano < 1895) {
+    if ($ano < 1895 ) {
         echo "<script>alert('Erro: O ano deve ser maior ou igual a 1895.');window.location.href = 'addMovies.php';</script>";
+        exit;
+    }
+
+    if ($ano > $anoAtual ) {
+        echo "<script>alert('Erro: O ano deve ser menor ou igual a $anoAtual.');window.location.href = 'addMovies.php';</script>";
         exit;
     }
 
@@ -47,16 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Move o arquivo para a pasta de destino
     move_uploaded_file($imagem_temp, $pasta_destino . $imagem_nome);
 
-    // Use declaração preparada para evitar injeção de SQL
     $sql = "INSERT INTO movies (name, duration, releaseYear, description, imgMovie, trail) 
             VALUES (?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
-    // Vincule os parâmetros
     $stmt->bind_param("sissss", $titulo, $duracao, $ano, $sinopse, $imagem_nome, $trail);
 
-    // Execute a declaração preparada
     if ($stmt->execute()) {
         // Obtenha o ID do filme inserido
         $idMovie = $stmt->insert_id;

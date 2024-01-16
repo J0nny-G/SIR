@@ -115,27 +115,31 @@ $events = getEvents($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
 <div class="container">
 
-    <h2>Admin Panel</h2>
+    <h2 class="text-center">Admin Panel</h2>
 
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Username</th>
-            <th>Função</th>
-            <th>Ações</th>
-        </tr>
-        <?php foreach ($users as $user): ?>
+    <table class="table">
+        <thead>
             <tr>
-                <td><?php echo $user['nameUser']; ?></td>
-                <td><?php echo $user['username']; ?></td>
-                <td><?php echo $user['name']; ?></td>
-                <td>
+                <th>Nome</th>
+                <th>Username</th>
+                <th>Função</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?php echo $user['nameUser']; ?></td>
+                    <td><?php echo $user['username']; ?></td>
+                    <td><?php echo $user['name']; ?></td>
+                    <td>
                     <form method="post" action="">
                         <input type="hidden" name="idloads_id" value="<?php echo $user['idUser']; ?>">
                         <select name="new_idloads">
@@ -150,9 +154,10 @@ $events = getEvents($conn);
                         <input type="hidden" name="delete_id" value="<?php echo $user['idUser']; ?>">
                         <button type="submit" name="delete">Delete</button>
                     </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 
     <div class="estreias">
@@ -174,13 +179,16 @@ $events = getEvents($conn);
                 <button type="submit">Criar nova Estreia</button>
             </form>
         </div>
-        <table>
+        <table class="table">
+        <thead>
             <tr>
                 <th>Titulo do Filme/Série</th>
                 <th>Data de Estreia</th>
                 <th>Descrição</th>
                 <th>Ações</th>
             </tr>
+        </thead>
+        <tbody>
             <?php foreach ($events as $event): ?>
                 <tr>
                     <td><?php echo $event['title']; ?></td>
@@ -188,24 +196,25 @@ $events = getEvents($conn);
                     <td><?php echo $event['description']; ?></td>
                     <td>
                         <button onclick="abrirJanela(
-                            '<?php echo $event['title']; ?>',
-                            '<?php echo $event['start_date']; ?>',
-                            '<?php echo $event['description']; ?>',
-                            <?php echo $event['id']; ?>
-                        )">Editar</button>
-                        <form action="deleteEstreia.php" method="post" >
-                            <input type="hidden" name="delete_event_id" value="<?php echo $event['id']; ?>">
-                            <button type="submit">Eliminar</button>
-                        </form>
+                                '<?php echo $event['title']; ?>',
+                                '<?php echo $event['start_date']; ?>',
+                                '<?php echo $event['description']; ?>',
+                                <?php echo $event['id']; ?>
+                                )">Editar</button>
+                            <form action="deleteEstreia.php" method="post" >
+                                <input type="hidden" name="delete_event_id" value="<?php echo $event['id']; ?>">
+                                <button type="submit">Eliminar</button>
+                            </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
-        </table>
+        </tbody>
+    </table>
     </div>
 
-    <div class="logout-btn">
+    <div class="logout-btn text-center">
         <form method="post" action="logout.php">
-            <button type="submit">Logout</button>
+            <button type="submit" class="btn btn-danger">Logout</button>
         </form>
     </div>
 
@@ -228,6 +237,11 @@ $events = getEvents($conn);
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 <script>
     function mostrarFormulario() {

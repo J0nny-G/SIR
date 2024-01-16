@@ -51,6 +51,16 @@ $analysts->store_result();
 $totalAnalysts = $analysts->num_rows;
 $analysts->close();
 
+// Nomes de categorias
+$analysts = $conn->prepare("SELECT name FROM categorys WHERE idCategory = ?");
+$analysts->bind_param("i", $analyst);
+$analysts->execute();
+$analysts->store_result();
+$totalAnalysts = $analysts->num_rows;
+$analysts->close();
+
+// 
+
 ?>
 
 <div style="width: 80%; margin: auto;">
@@ -98,6 +108,27 @@ $analysts->close();
                 borderColor: [
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var userData = {
+            labels: ['User', 'Admin', 'Taster', 'Analyst'],
+            datasets: [{
+                label: 'Número de Tipos de Utilizadores Registrados',
+                data: [<?php echo $totalUsers ?>, <?php echo $totalAdmins; ?>, <?php echo $totalTasters; ?>, <?php echo $totalAnalysts; ?>],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
                 ],
                 borderWidth: 1
             }]

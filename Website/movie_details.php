@@ -111,7 +111,7 @@ if ($result_comments->num_rows > 0) {
             echo "</form>";
             echo "</div>";
 
-            // Exibição de Comentários Armazenados no Banco de Dados
+            // Exibição de Comentários Armazenados no Base de Dados
             $query_comments = "SELECT coments.idUser, coments.coment, coments.classificacao, users.imgProfile FROM coments INNER JOIN users ON coments.idUser = users.idUser WHERE coments.idMovie = $movieId";
             $result_comments = $conn->query($query_comments);
 
@@ -125,8 +125,8 @@ if ($result_comments->num_rows > 0) {
                     echo "  <div class='comment-content'>";
                     echo "      <p>{$row_comment['coment']}</p>";
                     echo "      <p><strong>Classificação: </strong>" . (isset($row_comment['classificacao']) ? $row_comment['classificacao'] : 'Não classificado') . " &#9733;</p>";    
-                    echo "  </div>"; // Adicione esta linha para fechar a <div class='comment-content'>
-                    echo "</div>"; // Adicione esta linha para fechar a <div class='comment'>
+                    echo "  </div>"; 
+                    echo "</div>";
                 }
                 echo "</div>";
             }

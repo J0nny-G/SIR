@@ -32,11 +32,25 @@ body {
 .search-bar {
     display: flex;
     margin-bottom: 20px;
+    background-color: #cccccc; /* Cor de fundo */
+    border-radius: 8px; /* Cantos arredondados */
+    overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites da barra de pesquisa */
+    transition: background-color 0.3s ease; /* Transição suave para mudança de cor */
 }
 
 #searchInput {
     flex-grow: 1;
     padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: inherit; /* Herda a cor de fundo da barra de pesquisa */
+    color: #333; /* Cor do texto */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transições suaves para mudança de cor de fundo e texto */
+}
+
+#searchInput::placeholder {
+    color: #999; /* Cor do texto de espaço reservado */
 }
 
 button {
@@ -45,19 +59,35 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Adiciona uma borda arredondada */
+}
+.category-buttons {
+    display: flex;
+    justify-content: space-around; /* ou outro valor conforme necessário */
+}
+
+.category-button {
+    margin: 3px; /* Espaçamento entre os botões */
 }
 
 .category-buttons {
     margin-bottom: 20px;
 }
 
+/* Aplica estilos aos botões dentro de .category-buttons */
 .category-buttons button {
     margin-right: 10px;
     padding: 10px;
     background-color: #007BFF;
-    color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Adiciona uma leve borda arredondada */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave para a mudança de cor de fundo */
+}
+
+/* Altera a cor de fundo do botão ao passar o mouse por cima */
+.category-buttons button:hover {
+    background-color: #0056b3; /* Tonalidade mais escura ao passar o mouse */
 }
 
 .movie-covers {
@@ -70,24 +100,20 @@ button {
     width: 150px;
     height: 250px; /* Altura fixa */
     object-fit: cover; /* Mantém a proporção e corta o excesso se necessário */
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
+/* Estilos para a classe .movie-button */
 .movie-button {
+    position: relative;
     background-color: transparent;
     border: none;
     padding: 0;
     cursor: pointer;
+    overflow: hidden;
 }
 
-.category-buttons {
-    display: flex;
-    justify-content: space-around; /* ou outro valor conforme necessário */
+/* Adiciona um sublinhado ao passar o mouse por cima */
+.movie-button:hover {
+    border-bottom: 3px solid #007BFF; /* Adiciona uma borda inferior com a cor desejada */
 }
-
-.category-button {
-    /* Estilos adicionais para os botões, se necessário */
-    margin: 5px; /* Espaçamento entre os botões */
-}
-

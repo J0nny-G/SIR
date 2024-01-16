@@ -78,6 +78,7 @@ $conn->close();
             echo "<img src=\"uploads/{$row_movie['imgMovie']}\" alt=\"{$row_movie['name']}\">";
             echo "</button>";
             echo "</form>";
+
         }
         ?>
     </div>

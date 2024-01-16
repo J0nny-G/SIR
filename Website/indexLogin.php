@@ -40,7 +40,7 @@ $conn->close();
 <body>
     
 <div class="sidemenu">
-    <p><a href="#">Página Inicial</a></p>
+    <p><a href="indexLogin.php">Página Inicial</a></p>
     <p><a href="addMovies.php">Adicionar Filme/Série</a></p>
     <p><a href="calendario.php">Lançamentos</a></p>
     <p><a href="profile.php">Meu Perfil</a></p>
@@ -54,21 +54,21 @@ $conn->close();
 
     <div id="search-results" class="movie-covers"></div>
 
-    <div class="category-buttons">
-    <?php
-    // Exibe as categorias como botões/link
-    while ($row_category = $result_categories->fetch_assoc()) {
-        echo "<form action=\"categorias.php\" method=\"post\">";
-        echo "<input type=\"hidden\" name=\"categoryId\" value=\"{$row_category['idCategory']}\">";
-        echo "<button type=\"submit\" class=\"category-button\">";
-        echo "{$row_category['name']}";
-        echo "</button>";
-        echo "</form>";
-    }
-    ?>
-</div>
+    <div class="category-buttons" id="categoryButtonsContainer">
+        <?php
+        // Exibe as categorias como botões/link
+        while ($row_category = $result_categories->fetch_assoc()) {
+            echo "<form action=\"categorias.php\" method=\"post\">";
+            echo "<input type=\"hidden\" name=\"categoryId\" value=\"{$row_category['idCategory']}\">";
+            echo "<button type=\"submit\" class=\"category-button\">";
+            echo "{$row_category['name']}";
+            echo "</button>";
+            echo "</form>";
+        }
+        ?>
+    </div>
 
-    <div class="movie-covers">
+    <div class="movie-covers" id="movieCoversContainer">
         <?php
         // Exibe as capas dos filmes como botões/link
         while ($row_movie = $result_movies->fetch_assoc()) {
@@ -85,23 +85,27 @@ $conn->close();
 </div>
 <script>
     function searchMovies() {
-    searchTerm = document.getElementById('searchInput').value;
+        searchTerm = document.getElementById('searchInput').value;
 
-    // Faça uma solicitação AJAX para searchMovies.php com o termo de pesquisa
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                // Atualize a div search-results com a resposta
-                document.getElementById('search-results').innerHTML = xhr.responseText;
-            } else {
-                alert('Erro na solicitação AJAX. Status: ' + xhr.status);
+        // Oculta os botões na parte inferior da página durante a pesquisa
+        document.getElementById('categoryButtonsContainer').style.display = 'none';
+        document.getElementById('movieCoversContainer').style.display = 'none';
+
+        // Faça uma solicitação AJAX para searchMovies.php com o termo de pesquisa
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    // Atualize a div search-results com a resposta
+                    document.getElementById('search-results').innerHTML = xhr.responseText;
+                } else {
+                    alert('Erro na solicitação AJAX. Status: ' + xhr.status);
+                }
             }
-        }
-    };
-    xhr.open('GET', 'search_results.php?searchTerm=' + encodeURIComponent(searchTerm), true);
-    xhr.send();
-}
+        };
+        xhr.open('GET', 'search_results.php?searchTerm=' + encodeURIComponent(searchTerm), true);
+        xhr.send();
+    }
 </script>
 
 </body>

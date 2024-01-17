@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 
 $logged_in_username = $_SESSION['username'];
 
-$conn = new mysqli("localhost", "root", "", "movitime");
+$conn = new mysqli("localhost", "id21772530_pedro", "Porto2323_", "id21772530_dbmovie");
 
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);

@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-$conn = new mysqli("localhost", "root", "", "movitime");
+$conn = new mysqli("localhost", "id21772530_pedro", "Porto2323_", "id21772530_dbmovie");
 
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conn = new mysqli("localhost","root","","movitime");
+$conn = new mysqli("localhost","id21772530_pedro","Porto2323_","id21772530_dbmovie");
 
 $id = $_POST['delete_event_id'];
 

@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Conectar ao banco de dados (substitua com suas próprias credenciais)
-$conn = new mysqli("localhost", "root", "", "movitime");
+$conn = new mysqli("localhost", "id21772530_pedro", "Porto2323_", "id21772530_dbmovie");
 
 // Verificar a conexão
 if ($conn->connect_error) {

@@ -6,7 +6,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Conexão com a base de dados
-    $conn = new mysqli("localhost", "root", "", "movitime");
+    $conn = new mysqli("localhost", "id21772530_pedro", "Porto2323_", "id21772530_dbmovie");
 
     // Verifica a conexão
     if ($conn->connect_error) {
